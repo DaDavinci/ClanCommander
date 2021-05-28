@@ -101,7 +101,7 @@ src/**/*.js.map
 src/**/*.js
 
 # Individual files
-
+**/*.code-workspace
 
 # useless files
 desktop.ini
