@@ -4,7 +4,7 @@
 @import url('https://css.gg/css');
 
 /* Custom Global Styles
- * https://github.com/dadavinci/runescape-clancommander
+ * https://github.com/dadavinci/clancommander
  */
 body {
   font-family: BlinkMacSystemFont, Roboto, Arial;
@@ -472,16 +472,14 @@ a.btn.active
 }
 /* DEFAULT BUTTON W/O COLORS END */
 
-
-
 @font-face {
   font-family: 'RuneScape regular';
-  src: url('./Fonts/Cinzel-Regular.otf');
+  src: url('./fonts/Cinzel-Regular.otf');
 }
 
 @font-face {
   font-family: 'RuneScape bold';
-  src: url('./Fonts/Cinzel-Bold.otf');
+  src: url('./fonts/Cinzel-Bold.otf');
   font-weight: bold;
 }
 
@@ -532,7 +530,7 @@ header p span.website-descriptor
 
 .background-section
 {
-  background-image: url('./Image/background/background-main.jpg');
+  background-image: url('./images/background/background-main.jpg');
   background-repeat: repeat;
   background-size: auto;
   box-shadow: -1px 0px 35px 0px rgba(0,0,40,0.51);
@@ -542,7 +540,7 @@ header p span.website-descriptor
 
 .background-citadel
 {
-  background-image: url('./Image/background/clan-citadel.jpg');
+  background-image: url('./images/background/clan-citadel.jpg');
   background-size: 140%;
   background-repeat: no-repeat;
   background-origin: content-box;
@@ -551,7 +549,7 @@ header p span.website-descriptor
 
 .background-portal
 {
-  background-image: url('./Image/background/clan-citadel-portal.jpg');
+  background-image: url('./images/background/clan-citadel-portal.jpg');
   background-size: 140%;
   background-repeat: no-repeat;
   background-origin: content-box;
@@ -560,7 +558,7 @@ header p span.website-descriptor
 
 .background-dragons
 {
-  background-image: url('./Image/background/clan-citadel-dragons.jpg');
+  background-image: url('./images/background/clan-citadel-dragons.jpg');
   background-size: 140%;
   background-repeat: no-repeat;
   background-origin: content-box;
@@ -569,7 +567,7 @@ header p span.website-descriptor
 
 .background-senate
 {
-  background-image: url('./Image/background/clan-citadel-senate.jpg');
+  background-image: url('./images/background/clan-citadel-senate.jpg');
   background-size: 140%;
   background-repeat: no-repeat;
   background-origin: content-box;
@@ -590,7 +588,7 @@ header p span.website-descriptor
 
   .background-citadel
   {
-    background-image: url('./Image/background/mobile/clan-citadel.jpg');
+    background-image: url('./images/background/mobile/clan-citadel.jpg');
     background-size: 140%;
     background-repeat: no-repeat;
     background-origin: content-box;
@@ -599,7 +597,7 @@ header p span.website-descriptor
 
   .background-portal
   {
-    background-image: url('./Image/background/mobile/clan-citadel-portal.jpg');
+    background-image: url('./images/background/mobile/clan-citadel-portal.jpg');
     background-size: 140%;
     background-repeat: no-repeat;
     background-origin: content-box;
@@ -608,7 +606,7 @@ header p span.website-descriptor
 
   .background-dragons
   {
-    background-image: url('./Image/background/mobile/clan-citadel-dragons.jpg');
+    background-image: url('./images/background/mobile/clan-citadel-dragons.jpg');
     background-size: 140%;
     background-repeat: no-repeat;
     background-origin: content-box;
@@ -617,7 +615,7 @@ header p span.website-descriptor
 
   .background-senate
   {
-    background-image: url('./Image/background/mobile/clan-citadel-senate.jpg');
+    background-image: url('./images/background/mobile/clan-citadel-senate.jpg');
     background-size: 140%;
     background-repeat: no-repeat;
     background-origin: content-box;

@@ -1,6 +1,6 @@
 /* --- HTML Overwrites --- */
 body{
-	background-image: url('../Image/pattern/stripes.svg');
+	background-image: url('../image/pattern/stripes.svg');
 	background-repeat: repeat;
 }
 
@@ -53,31 +53,31 @@ pre > span.line::before{
 /* --- Backgrounds --- */
 .bg-chalkboard{
 	color: #fefefe !important;
-	background-image: url('../Image/pattern/chalkboard.jpg');
+	background-image: url('../image/pattern/chalkboard.jpg');
 	background-repeat: repeat;
 }
 
 .bg-stripes{
 	color: #fefefe !important;
-	background-image: url('../Image/pattern/stripes.svg');
+	background-image: url('../image/pattern/stripes.svg');
 	background-repeat: repeat;
 }
 
 .bg-stars{
 	color: #fefefe !important;
-	background-image: url('../Image/pattern/stars.svg');
+	background-image: url('../image/pattern/stars.svg');
 	background-repeat: repeat;
 }
 
 .bg-figures{
 	color: #fefefe !important;
-	background-image: url('../Image/pattern/figures.png');
+	background-image: url('../image/pattern/figures.png');
 	background-repeat: repeat;
 }
 
 .bg-triangles{
 	color: #fefefe !important;
-	background-image: url('../Image/pattern/triangles.svg');
+	background-image: url('../image/pattern/triangles.svg');
 	background-repeat: repeat;
 }
 
@@ -95,7 +95,7 @@ pre > span.line::before{
 
 .bg-sharp-gradient-light{
 	background: linear-gradient(135deg,#fefefe 25%,#eeeeee 100%);
-	background-image: url('./../Image/background/sharp-gradient-light.svg');
+	background-image: url('../images/background/sharp-gradient-light.svg');
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -107,7 +107,7 @@ pre > span.line::before{
 
 .bg-sharp-gradient-dark{
 	background: linear-gradient(135deg,#333333 25%,#3e3e3e 100%);
-	background-image: url('./../Image/background/sharp-gradient-dark.svg');
+	background-image: url('../images/background/sharp-gradient-dark.svg');
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -119,7 +119,7 @@ pre > span.line::before{
 
 .bg-sharp-gradient-purple{
 	background: linear-gradient(135deg,#351563 25%,#8C57D9 100%);
-	background-image: url('./../Image/background/sharp-gradient-purple.svg');
+	background-image: url('../images/background/sharp-gradient-purple.svg');
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -131,7 +131,7 @@ pre > span.line::before{
 
 .bg-sharp-gradient-blue{
 	background: linear-gradient(135deg,#007bff 25%,#9999FF 100%);
-	background-image: url('./../Image/background/sharp-gradient-blue.svg');
+	background-image: url('../images/background/sharp-gradient-blue.svg');
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -143,7 +143,7 @@ pre > span.line::before{
 
 .bg-sharp-gradient-red{
 	background: linear-gradient(135deg,#ff3548 25%,#f5ee74 100%);
-	background-image: url('./../Image/background/sharp-gradient-red.svg');
+	background-image: url('../images/background/sharp-gradient-red.svg');
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -155,7 +155,7 @@ pre > span.line::before{
 
 .bg-sharp-gradient-green{
 	background: linear-gradient(135deg,#11998e 25%,#38ef7d 100%);
-	background-image: url('./../Image/background/sharp-gradient-green.svg');
+	background-image: url('../images/background/sharp-gradient-green.svg');
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -167,7 +167,7 @@ pre > span.line::before{
 
 .bg-sharp-gradient-yellow{
 	background: linear-gradient(135deg,#f5ee74 25%,#bf7700 100%);
-	background-image: url('./../Image/background/sharp-gradient-yellow.svg');
+	background-image: url('../images/background/sharp-gradient-yellow.svg');
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -197,56 +197,56 @@ pre > span.line::before{
 
 .bg-space-light{
 	background: linear-gradient(135deg,#fefefe 25%,#eeeeee 100%);
-	background-image: url('./../Image/background/space.svg');
-	background-image: url('./../Image/background/space.svg'), linear-gradient(135deg,#fefefe 25%,#eeeeee 100%);
+	background-image: url('../images/background/space.svg');
+	background-image: url('../images/background/space.svg'), linear-gradient(135deg,#fefefe 25%,#eeeeee 100%);
 	background-size: 100% 100%;
 	color: #333 !important;
 }
 
 .bg-space-dark{
 	background: linear-gradient(135deg,#333333 25%,#303030 100%);
-	background-image: url('./../Image/background/space.svg');
-	background-image: url('./../Image/background/space.svg'), linear-gradient(135deg,#333333 25%,#303030 100%);
+	background-image: url('../images/background/space.svg');
+	background-image: url('../images/background/space.svg'), linear-gradient(135deg,#333333 25%,#303030 100%);
 	background-size: 100% 100%;
 	color: #fefefe !important;
 }
 
 .bg-space-purple{
 	background: linear-gradient(135deg,#351563 25%,#8C57D9 100%);
-	background-image: url('./../Image/background/space.svg');
-	background-image: url('./../Image/background/space.svg'), linear-gradient(135deg,#351563 25%,#8C57D9 100%);
+	background-image: url('../images/background/space.svg');
+	background-image: url('../images/background/space.svg'), linear-gradient(135deg,#351563 25%,#8C57D9 100%);
 	background-size: 100% 100%;
 	color: #fefefe !important;
 }
 
 .bg-space-blue{
 	background: linear-gradient(135deg, #007bff 25%, #9999FF 100%);
-	background-image: url('./../Image/background/space.svg');
-	background-image: url('./../Image/background/space.svg'), linear-gradient(135deg, #007bff 25%, #9999FF 100%);
+	background-image: url('../images/background/space.svg');
+	background-image: url('../images/background/space.svg'), linear-gradient(135deg, #007bff 25%, #9999FF 100%);
 	background-size: 100% 100%;
 	color: #fefefe !important;
 }
 
 .bg-space-red{
 	background: linear-gradient(135deg,#ff3548 25%,#f5ee74 100%);
-	background-image: url('./../Image/background/space.svg');
-	background-image: url('./../Image/background/space.svg'), linear-gradient(135deg,#ff3548 25%,#f5ee74 100%);
+	background-image: url('../images/background/space.svg');
+	background-image: url('../images/background/space.svg'), linear-gradient(135deg,#ff3548 25%,#f5ee74 100%);
 	background-size: 100% 100%;
 	color: #fefefe !important;
 }
 
 .bg-space-green{
 	background: linear-gradient(135deg,#11998e 25%,#38ef7d 100%);
-	background-image: url('./../Image/background/space.svg');
-	background-image: url('./../Image/background/space.svg'), linear-gradient(135deg,#11998e 25%,#38ef7d 100%);
+	background-image: url('../images/background/space.svg');
+	background-image: url('../images/background/space.svg'), linear-gradient(135deg,#11998e 25%,#38ef7d 100%);
 	background-size: 100% 100%;
 	color: #fefefe !important;
 }
 
 .bg-space-yellow{
 	background: linear-gradient(135deg,#f5ee74 25%,#bf7700 100%);
-	background-image: url('./../Image/background/space.svg');
-	background-image: url('./../Image/background/space.svg'), linear-gradient(135deg,#f5ee74 25%,#bf7700 100%);
+	background-image: url('../images/background/space.svg');
+	background-image: url('../images/background/space.svg'), linear-gradient(135deg,#f5ee74 25%,#bf7700 100%);
 	background-size: 100% 100%;
 	color: #fefefe !important;
 }

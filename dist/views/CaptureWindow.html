@@ -18,10 +18,10 @@
     <script
       src="./../assets/javascript/bootstrap.js"
      ></script>
-    <script
+    <!-- <script
       defer
       src="./../assets/javascript/bootstrap-navbar.js"
-    ></script>
+    ></script> -->
 
     <!-- Application Cascade Style Sheet references -->
     <link
@@ -47,9 +47,9 @@
     ></script>
 
     <!-- required Class & Dependency references -->
-    <!-- <script
+    <script
       src="./../classes/HTTPServer.js"
-    ></script> -->
+    ></script>
 
     <!-- DOM Controller references -->
     <script
@@ -71,13 +71,10 @@
       <div class="collapse navbar-collapse text-center scrolled-false" id="navbarLinks">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-              <a class="nav-link text-light" href="#windowTop" style="color: #E1BB34 !important;">ClanCommander</a>
+              <a class="nav-link text-light" href="#windowTop" style="color: #E1BB34 !important;">Clan Commander</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mr-3">
-          <!-- <li class="nav-item">
-              <a href="./Settings.html" class="btn btn-outline-light btn-disabled my-2 my-sm-0" style="color: #ffffff;">Settings</a>
-          </li> -->
           <li class="nav-item">
               <a class="btn btn-outline-primary my-2 my-sm-0" id="selectBtn" style="color: #ffffff;">Capture</a>
           </li>
@@ -90,7 +87,9 @@
 
       <section id="videoDisplay" style="padding:0;margin:0;margin-top: 5vh;">
         <div class="row">
-          <video id="videoStream" crossorigin="anonymous" class="text-center bg-sharp-gradient-light width-8 center-1d" style="height: auto; min-height: 0px;"></video>
+          <video id="videoStream" crossorigin="anonymous" class="text-center bg-sharp-gradient-light width-8 center-1d" style="height: auto; min-height: 0px;">
+
+          </video>
         </div>
         <div class="row" style="display:none;">
           <div class="col-lg-5">
@@ -128,10 +127,7 @@
         var accuracyMultiplier = 1.25; // int >= 1
 
         // Interval time to wait in-between OCR detection
-        var intervalInSec = 5;
-
-        // Overload switch
-        var isOverloaded = false;
+        var intervalInSec = 15;
 
         // Create a scheduler object so there can be workers added after
         var scheduler = createScheduler();
@@ -263,17 +259,6 @@
             // Get the end time on processing the image
             let end = new Date();
 
-            // Check for overload
-            var overloadRatio = 2;
-            if( Number.parseInt(end.getMinutes().toString()+end.getSeconds().toString()) - Number.parseInt(start.getSeconds().toString()+start.getMinutes()) >= intervalInSec *overloadRatio )
-            {
-                isOverloaded = true;
-                console.log((Number.parseInt(end.getMinutes().toString()+end.getSeconds().toString()) - Number.parseInt(start.getSeconds().toString()+start.getMinutes())).toString() + " seconds is taking to long to process detection,\nOVERLOAD recorded..");
-            }else
-            {
-                isOverloaded = false;
-            }
-
             // Cut up text by getting each line after \n and log each line seperate
             console.log("[ " + start.getMinutes() + ":" + start.getSeconds()  + " -> " + end.getMinutes() + ":" + end.getSeconds()  + " ]:\n" + text.toString() );
 
@@ -314,15 +299,7 @@
             // Register detection every 1s that occur in the <video> element
             videoElem.addEventListener('play', () => {
                 //console.log("Play");
-                detectionLoop = setInterval(() => {
-                    // ONLY run detection if system isnt overloaded
-                    if(!isOverloaded)
-                        detectCharacters();
-                    else
-                        setTimeout(() => {
-                            isOverloaded = false;
-                        }, intervalInSec *1000 *2);
-                }, intervalInSec *1000);
+                detectionLoop = setInterval(detectCharacters, intervalInSec *1000);
             });
             videoElem.addEventListener('end', () => {
                 //console.log("End");
