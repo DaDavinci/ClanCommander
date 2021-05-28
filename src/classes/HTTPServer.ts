@@ -4,6 +4,7 @@ type HTTPConfig =
     Port: number;
     TickRate: number;
 };
+
 class HTTPServer
 {
 

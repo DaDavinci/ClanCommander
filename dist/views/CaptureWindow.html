@@ -8,38 +8,37 @@
     <!-- Bootstrap Cascade Style Sheet references -->
     <link
       rel="stylesheet"
-      href="./../Assets/StyleSheet/bootstrap.min.css"
+      href="./../assets/stylesheet/bootstrap.min.css"
     />
 
     <!-- Bootstrap JavaScript references -->
     <script
-      src="./../Assets/JavaScript/jquery.min.js"
+      src="./../assets/javascript/jquery.min.js"
     ></script>
     <script
-      defer
-      src="./../Assets/JavaScript/bootstrap.js"
+      src="./../assets/javascript/bootstrap.js"
      ></script>
     <script
       defer
-      src="./../Assets/JavaScript/bootstrap-navbar.js"
+      src="./../assets/javascript/bootstrap-navbar.js"
     ></script>
 
     <!-- Application Cascade Style Sheet references -->
     <link
       rel="stylesheet"
-      href="./../Assets/StyleSheet/utility.css"
+      href="./../assets/stylesheet/utility.css"
     />
     <link
       rel="stylesheet"
-      href="./../Assets/StyleSheet/responsive.css"
+      href="./../assets/stylesheet/responsive.css"
     />
     <link
       rel="stylesheet"
-      href="./../Assets/Themes/lux.css"
+      href="./../assets/themes/lux.css"
     />
     <link
       rel="stylesheet"
-      href="./../Assets/Styles.css"
+      href="./../assets/styles.css"
     />
 
     <!-- tesseract.js specific references -->
@@ -49,13 +48,13 @@
 
     <!-- required Class & Dependency references -->
     <!-- <script
-      src="./../Class/HTTPServer.js"
+      src="./../classes/HTTPServer.js"
     ></script> -->
 
     <!-- DOM Controller references -->
     <script
       defer
-      src="./../Controller/CaptureWindow.js"
+      src="./../controllers/CaptureWindow.js"
     ></script>
 
   </head>
@@ -63,7 +62,7 @@
 
     <!-- Navigation at the TOP of the DOM -->
     <nav class="background-section navbar navbar-expand-lg border-0 navbar-fixed">
-      <a class="navbar-brand ml-3 scrolled-false" href=""><img src="./../Assets/Image/logo/looneybin.png" alt="Looney Bin Riot in Short" width="75px"></a>
+      <a class="navbar-brand ml-3 scrolled-false" href=""><img src="./../assets/images/logo/looneybin.png" alt="looney bin riot" width="75px"></a>
 
       <button style="border: 2px solid #E1BB34; color: #E1BB34" class="navbar-toggler btn btn-lg btn-outline-primary" type="button" data-toggle="collapse" data-target="#navbarLinks" aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
         <p style="line-height: 26px; padding: 0xp; margin: 0px;">=</p>
@@ -147,9 +146,9 @@
         getDimensions = () => {
 
             // Ratio of the video source's true dimensions
-            var videoRatio = videoElement.videoWidth / videoElement.videoHeight;
+            var videoRatio = videoElem.videoWidth / videoElem.videoHeight;
             // The width and height of the video element
-            var width = videoElement.offsetWidth, height = videoElement.offsetHeight;
+            var width = videoElem.offsetWidth, height = videoElem.offsetHeight;
             // The ratio of the element's width to its height
             var elementRatio = width/height;
 
@@ -181,7 +180,7 @@
                 // Check for browser implementation for PiP
                 if (document.pictureInPictureEnabled) {
                     // Open PiP
-                    videoElement.requestPictureInPicture();
+                    videoElem.requestPictureInPicture();
                 }
 
             }
@@ -225,7 +224,7 @@
             // Draw Snapshot to Canvas element and process the image
             // Returns a canvas (var image)
             // await to make sure that its synchronous and OCR doesnt get initiated before the image is returned
-            var image = await processImage(videoElement);
+            var image = await processImage(videoElem);
 
             // Get the start time on processing the image
             let start = new Date();
@@ -284,8 +283,8 @@
         // @TODO: Change it so that its only initialized once there is a MediaStream running...
         (async () =>
         {
-            // CaptureWindow.js/ts already instantiates the videoElement so it cant be selected again
-            // videoElement = document.querySelector('video');
+            // CaptureWindow.js/ts already instantiates the videoElem so it cant be selected again
+            // videoElem = document.querySelector('video');
 
             console.log("Starting realtime OCR...");
 
@@ -313,7 +312,7 @@
             console.log("Finish adding Workers...");
 
             // Register detection every 1s that occur in the <video> element
-            videoElement.addEventListener('play', () => {
+            videoElem.addEventListener('play', () => {
                 //console.log("Play");
                 detectionLoop = setInterval(() => {
                     // ONLY run detection if system isnt overloaded
@@ -325,21 +324,21 @@
                         }, intervalInSec *1000 *2);
                 }, intervalInSec *1000);
             });
-            videoElement.addEventListener('end', () => {
+            videoElem.addEventListener('end', () => {
                 //console.log("End");
                 clearInterval(detectionLoop);
             });
-            videoElement.addEventListener('pause', () => {
+            videoElem.addEventListener('pause', () => {
                 //console.log("Pause");
                 clearInterval(detectionLoop);
             });
 
             // Enable <video> element controlls like play/pause etc.
             // Trigger Play event and PictureInPicture IF enabled == true
-            // videoElement.controls = true;
+            // videoElem.controls = true;
             const event = new Event('play');
-            videoElement.dispatchEvent(event);
-            videoElement.play();
+            videoElem.dispatchEvent(event);
+            videoElem.play();
             //togglePictureInPicture();
 
             console.log("Finish Schedule setup...");

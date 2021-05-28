@@ -158,3 +158,5 @@ class CaptureWindow
   }
 
 }
+
+const captureWindow = new CaptureWindow();

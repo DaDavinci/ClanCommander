@@ -1,4 +1,4 @@
-class Console
+class ConsoleWindow
 {
     // Constants
     public Server: HTTPServer;
@@ -137,4 +137,4 @@ class Console
 }
 
 // Create new HTTPConsole
-const HTTPConsole: Console = new Console();
+const consoleWindow = new ConsoleWindow();

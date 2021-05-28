@@ -4,7 +4,7 @@ class Main
 {
 
   // Config Files
-  public Settings = require( __dirname + '/config/nxtbot-settings.json');
+  public settings = require( __dirname + '/config/nxtbot-settings.json');
 
   // Generate global Identifier
   public random = Math.random();
@@ -40,9 +40,11 @@ class Main
     });
 
     app.on('activate', () => {
+
+      // Start the window processes
       if (BrowserWindow.getAllWindows().length === 0) {
-        main.createConsoleWindow();
-        main.createAppWindow();
+        this.createConsoleWindow();
+        this.createAppWindow();
       }
     });
 
