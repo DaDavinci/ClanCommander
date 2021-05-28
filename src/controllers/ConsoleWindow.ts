@@ -21,7 +21,7 @@ class ConsoleWindow
                 };
 
                 // Log where the Server is located in console
-                console.log("Recieving for requests on \nhttp://127.0.0.1:" + server.Config.Port + "/api/v1/console");
+                this.addMessage("Recieving for requests on \nhttp://127.0.0.1:" + server.Config.Port + "/api/v1/console");
             },
 
             // Listener Method
@@ -37,10 +37,6 @@ class ConsoleWindow
                         break;
 
                     case '/api/v1/console/addMessage':
-                        //for( let i = 0; i <= request.headers.keys().length; i++ )
-                        //{
-                        //    await this.addMessage("header: " + request.headers.keys()[i].toString());
-                        //}
                         if(method == "GET" ){
                             this.addMessage(this.getKeyValue('m', url));
                         }
@@ -61,7 +57,7 @@ class ConsoleWindow
                 });
 
                 // Add objects to var result
-                const result: Object = {
+                const result = {
                     "message": "None",
                     "metadata": {
                         "location": request.url,

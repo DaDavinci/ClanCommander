@@ -78,7 +78,7 @@ class Main
     });
 
     // Open the DevTools.
-    consoleWindow.webContents.openDevTools();
+    // consoleWindow.webContents.openDevTools();
 
     // Show window
     consoleWindow.once('ready-to-show', () => {
