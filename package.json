@@ -1,7 +1,7 @@
 {
   "productName": "NXTBot",
   "name": "clan-commander",
-  "description": "ClanCommander is a Utility Tool to add Features to Clans in RuneScape 3.\nIt features OCR and Pattern Recognition Classifiactions to handle the interfacing with the NXT Client.\nThis is basically undetectable once you add some ML Artifical Intelligence into the mix... Just so you know!",
+  "description": "ClanCommander is a Utility Tool to add Features to Clans in RuneScape 3. It features OCR and Pattern Recognition Classifiactions to handle the interfacing with the NXT Client. This is basically undetectable once you add some ML Artifical Intelligence into the mix... Just so you know!",
   "authors": "DaDavinci",
   "version": "beta.2K21.05.28",
   "homepage": "https://github.com/DaDavinci/ClanCommander/blob/master/README.md",
