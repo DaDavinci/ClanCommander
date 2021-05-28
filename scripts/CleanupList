@@ -1,0 +1,8 @@
+#FILE
+node_modules/**
+src/**/*.js
+src/**/*.js.map
+src/*.js
+src/*.js.map
+#DIR
+node_modules/

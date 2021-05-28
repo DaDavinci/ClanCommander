@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap Cascade Style Sheet references -->
+    <link
+      rel="stylesheet"
+      href="./../Assets/StyleSheet/bootstrap.min.css"
+    />
+
+    <!-- Bootstrap JavaScript references -->
+    <script
+      src="./../Assets/JavaScript/jquery.min.js"
+    ></script>
+    <script
+      defer
+      src="./../Assets/JavaScript/bootstrap.js"
+     ></script>
+
+    <!-- Application Cascade Style Sheet references -->
+    <link
+      rel="stylesheet"
+      href="./../Assets/StyleSheet/utility.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./../Assets/StyleSheet/responsive.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./../Assets/Themes/lux.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./../Assets/Styles.css"
+    />
+
+    <!-- required Class & Dependency references -->
+    <script
+      src="./../Class/HTTPServer.js"
+    ></script>
+
+    <!-- DOM Controller references -->
+    <script
+      defer
+      src="./../Controller/ConsoleWindow.js"
+    ></script>
+
+  </head>
+  <body class="content background-section">
+    <section id="console-box" class="pt-0 pb-0">
+        <pre id="logbox" class="width-100 text-left text-light mt-0 mb-0 height-90">
+            <span id="logbox-line-element" class="line width-10" style="display:none;" data-line-number="00">Initialized OCR</span>
+        </pre>
+        <form>
+            <input class="width-100" id="console-input" name="input" placeholder="Type Command:"></input>
+        </form>
+    </section>
+
+</body>

@@ -1,0 +1,626 @@
+/* Icons
+ * https://github.com/astrit/css.gg
+ */
+@import url('https://css.gg/css');
+
+/* Custom Global Styles
+ * https://github.com/dadavinci/runescape-clancommander
+ */
+body {
+  font-family: BlinkMacSystemFont, Roboto, Arial;
+  margin: 0;
+  padding: 0;
+  color: #eee;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.btn{
+  display: inline;
+  --ggs: 1.5;
+}
+
+:root {
+  --ggs: 1;
+}
+
+video {
+  margin: 0 auto;
+  display: block;
+  background-color: #876100;
+}
+
+
+/* DEFAULT BUTTON COLORS */
+.btn-default,
+a.btn-default
+{
+  background-color: #eeeeee !important;
+  border-color: #eeeeee !important;
+  border-width: 0px;
+  border-style: solid;
+  color: #333 !important;
+}
+
+.btn-default.btn-outline,
+a.btn-default.btn-outline
+{
+  color: #eee !important;
+}
+
+.btn-default:hover,
+.btn-default.active:hover,
+.btn-default.focus:hover,
+
+a.btn-default:hover,
+a.btn-default.active:hover,
+a.btn-default.focus:hover
+{
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #ffffff auto 0px;
+  color: #333 !important;
+}
+
+.btn-default:focus,
+.btn-default.focus,
+.btn-default.focus:active,
+.btn-default:active,
+.btn-default.active,
+.btn-default.active:active,
+
+a.btn-default:focus,
+a.btn-default.focus,
+a.btn-default.focus:active,
+a.btn-default:active,
+a.btn-default.active,
+a.btn-default.active:focus
+{
+  background-color: #ffffff;
+  background-image: radial-gradient(circle, #eeeeee 10%, #ffffff 11%);
+  background-repeat: no-repeat;
+  background-size: 1000% 1000%;
+  border-color: #ffffff !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #ffffff auto 0px;
+  color: #333 !important;
+}
+/* DEFAULT BUTTON COLORS END */
+
+/* PRIMARY BUTTON COLORS */
+.btn-primary,
+a.btn-primary
+{
+  background-color: #876100 !important;
+  border-color: #876100 !important;
+  border-width: 0px;
+  border-style: solid;
+  color: #eee !important;
+}
+
+.btn-primary:hover,
+.btn-primary.active:hover,
+.btn-primary.focus:hover,
+
+a.btn-primary:hover,
+a.btn-primary.active:hover,
+a.btn-primary.focus:hover
+{
+  background-color: #E1BB34 !important;
+  border-color: #E1BB34 !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #E1BB34 auto 0px;
+  color: #eee !important;
+}
+
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary.focus:active,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.active:active,
+
+a.btn-primary:focus,
+a.btn-primary.focus,
+a.btn-primary.focus:active,
+a.btn-primary:active,
+a.btn-primary.active,
+a.btn-primary.active:focus
+{
+  background-color: #E1BB34;
+  background-image: radial-gradient(circle, #876100 10%, #E1BB34 11%);
+  background-repeat: no-repeat;
+  background-size: 1000% 1000%;
+  border-color: #E1BB34 !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #E1BB34 auto 0px;
+  color: #eee !important;
+}
+/* PRIMARY END */
+
+/* SECONDARY */
+.btn-secondary,
+a.btn-secondary
+{
+  background-color: #d53970 !important;
+  border-color: #d53970 !important;
+  border-width: 0px;
+  border-style: solid;
+  color: #eee !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary.active:hover,
+.btn-secondary.focus:hover,
+
+a.btn-secondary:hover,
+a.btn-secondary.active:hover,
+a.btn-secondary.focus:hover
+{
+  background-color: #bb3e6c !important;
+  border-color: #bb3e6c !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #bb3e6c auto 0px;
+  color: #eee !important;
+}
+
+.btn-secondary:focus,
+.btn-secondary.focus,
+.btn-secondary.focus:active,
+.btn-secondary:active,
+.btn-secondary.active,
+.btn-secondary.active:active,
+
+a.btn-secondary:focus,
+a.btn-secondary.focus,
+a.btn-secondary.focus:active,
+a.btn-secondary:active,
+a.btn-secondary.active,
+a.btn-secondary.active:focus
+{
+  background-color: #bb3e6c;
+  background-image: radial-gradient(circle, #d53970 10%, #bb3e6c 11%);
+  background-repeat: no-repeat;
+  background-size: 1000% 1000%;
+  border-color: #bb3e6c !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #bb3e6c auto 0px;
+  color: #eee !important;
+}
+/* SECONDARY BUTTON COLORS END */
+
+/* INFO BUTTON COLORS */
+.btn-info,
+a.btn-info
+{
+  background-color: #3987d5 !important;
+  border-color: #3987d5 !important;
+  border-width: 0px;
+  border-style: solid;
+  color: #eee !important;
+}
+
+.btn-info:hover,
+.btn-info.active:hover,
+.btn-info.focus:hover,
+
+a.btn-info:hover,
+a.btn-info.active:hover,
+a.btn-info.focus:hover
+{
+  background-color: #3e92bb !important;
+  border-color: #3e92bb !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #3e92bb auto 0px;
+  color: #eee !important;
+}
+
+.btn-info:focus,
+.btn-info.focus,
+.btn-info.focus:active,
+.btn-info:active,
+.btn-info.active,
+.btn-info.active:active,
+
+a.btn-info:focus,
+a.btn-info.focus,
+a.btn-info.focus:active,
+a.btn-info:active,
+a.btn-info.active,
+a.btn-info.active:focus
+{
+  background-color: #3e92bb;
+  background-image: radial-gradient(circle, #3987d5 10%, #3e92bb 11%);
+  background-repeat: no-repeat;
+  background-size: 1000% 1000%;
+  border-color: #3e92bb !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #3e92bb auto 0px;
+  color: #eee !important;
+}
+/* INFO BUTTON COLORS END */
+
+/* SUCCESS BUTTON COLORS */
+.btn-success,
+a.btn-success
+{
+  background-color: #3ebb61 !important;
+  border-color: #3ebb61 !important;
+  border-width: 0px;
+  border-style: solid;
+  color: #eee !important;
+}
+
+.btn-success:hover,
+.btn-success.active:hover,
+.btn-success.focus:hover,
+
+a.btn-success:hover,
+a.btn-success.active:hover,
+a.btn-success.focus:hover
+{
+  background-color: #39d564 !important;
+  border-color: #39d564 !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #39d564 auto 0px;
+  color: #eee !important;
+}
+
+.btn-success:focus,
+.btn-success.focus,
+.btn-success.focus:active,
+.btn-success:active,
+.btn-success.active,
+.btn-success.active:active,
+
+a.btn-success:focus,
+a.btn-success.focus,
+a.btn-success.focus:active,
+a.btn-success:active,
+a.btn-success.active,
+a.btn-success.active:focus
+{
+  background-color: #39d564;
+  background-image: radial-gradient(circle, #3ebb61 10%, #39d564 11%);
+  background-repeat: no-repeat;
+  background-size: 1000% 1000%;
+  border-color: #39d564 !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #39d564 auto 0px;
+  color: #eee !important;
+}
+/* SUCCESS BUTTON COLORS END */
+
+/* WARNING BUTTON COLORS */
+.btn-warning,
+a.btn-warning
+{
+  background-color: #bb973e !important;
+  border-color: #bb973e !important;
+  border-width: 0px;
+  border-style: solid;
+  color: #eee !important;
+}
+
+.btn-warning:hover,
+.btn-warning.active:hover,
+.btn-warning.focus:hover,
+
+a.btn-warning:hover,
+a.btn-warning.active:hover,
+a.btn-warning.focus:hover
+{
+  background-color: #d5b139 !important;
+  border-color: #d5b139 !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #d5b139 auto 0px;
+  color: #eee !important;
+}
+
+.btn-warning:focus,
+.btn-warning.focus,
+.btn-warning.focus:active,
+.btn-warning:active,
+.btn-warning.active,
+.btn-warning.active:active,
+
+a.btn-warning:focus,
+a.btn-warning.focus,
+a.btn-warning.focus:active,
+a.btn-warning:active,
+a.btn-warning.active,
+a.btn-warning.active:focus
+{
+  background-color: #d5b139;
+  background-image: radial-gradient(circle, #bb973e 10%, #d5b139 11%);
+  background-repeat: no-repeat;
+  background-size: 1000% 1000%;
+  border-color: #d5b139 !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #d5b139 auto 0px;
+  color: #eee !important;
+}
+/* WARNING BUTTON COLORS END */
+
+/* DANGER BUTTON COLORS */
+.btn-danger,
+a.btn-danger
+{
+  background-color: #d5393b !important;
+  border-color: #d5393b !important;
+  border-width: 0px;
+  border-style: solid;
+  color: #eee !important;
+}
+
+.btn-danger:hover,
+.btn-danger.active:hover,
+.btn-danger.focus:hover,
+
+a.btn-danger:hover,
+a.btn-danger.active:hover,
+a.btn-danger.focus:hover
+{
+  background-color: #bb3f3e !important;
+  border-color: #bb3f3e !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #bb3f3e auto 0px;
+  color: #eee !important;
+}
+
+.btn-danger:focus,
+.btn-danger.focus,
+.btn-danger.focus:active,
+.btn-danger:active,
+.btn-danger.active,
+.btn-danger.active:active,
+
+a.btn-danger:focus,
+a.btn-danger.focus,
+a.btn-danger.focus:active,
+a.btn-danger:active,
+a.btn-danger.active,
+a.btn-danger.active:focus
+{
+  background-color: #bb3f3e;
+  background-image: radial-gradient(circle, #d5393b 10%, #bb3f3e 11%);
+  background-repeat: no-repeat;
+  background-size: 1000% 1000%;
+  border-color: #bb3f3e !important;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  outline: #bb3f3e auto 0px;
+  color: #eee !important;
+}
+/* DANGER BUTTON COLORS END */
+
+/* DEFAULT BUTTON W/O COLORS */
+.btn,
+a.btn
+{
+  border-width: 2px;
+  border-style: solid;
+  color: #eee;
+}
+
+.btn+.btn,
+a.btn+a.btn,
+.btn,
+a.btn
+{
+  margin-top: 5px !important;
+}
+
+.btn-outline,
+a.btn-outline
+{
+  background-color: rgba(255,255,255,0) !important;
+  border-width: 2px;
+  border-style: solid;
+  color: initial;
+}
+
+.btn:hover,
+.btn:focus,
+.btn.focus,
+.btn:active,
+.btn.active,
+
+a.btn:hover,
+a.btn:focus,
+a.btn.focus,
+a.btn:active,
+a.btn.active
+{
+  color: #eee;
+  text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus,
+.btn.focus,
+.btn:active,
+.btn.active,
+.btn:focus,
+
+a.btn:hover,
+a.btn:focus,
+a.btn.focus,
+a.btn:active,
+a.btn.active
+{
+  touch-action: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* DEFAULT BUTTON W/O COLORS END */
+
+
+
+@font-face {
+  font-family: 'RuneScape regular';
+  src: url('./Fonts/Cinzel-Regular.otf');
+}
+
+@font-face {
+  font-family: 'RuneScape bold';
+  src: url('./Fonts/Cinzel-Bold.otf');
+  font-weight: bold;
+}
+
+*
+{
+  font-family: 'RuneScape regular';
+  text-rendering: optimizeSpeed;
+}
+
+p,a
+{
+  font-family: 'RuneScape regular';
+  color: inherit;
+  text-shadow: 1px 1px #333333;
+  font-size: 16px !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+h1 span, h2 span, h3 span, h4 span, h5 span, h6 span,
+h1.text-light, h2.text-light, h3.text-light, h4.text-light, h5.text-light, h6.text-light,
+h1.display-1, h1.display-2, h1.display-3
+{
+  font-family: 'RuneScape bold';
+  color: #e1bb34 !important;
+  font-weight: bold !important;
+  text-shadow: 2px 2px #333333;
+}
+
+header h1 span.website-title
+{
+  font-family: 'RuneScape bold';
+  font-size: 96px !important;
+  color: #e1bb34 !important;
+  text-shadow: 2px 2px #000000;
+}
+
+header p span.website-descriptor
+{
+  font-family: 'RuneScape bold';
+  font-size: 26px !important;
+  text-shadow: 2px 2px #000000;
+}
+
+.col
+{
+  display: inline-block;
+}
+
+.background-section
+{
+  background-image: url('./Image/background/background-main.jpg');
+  background-repeat: repeat;
+  background-size: auto;
+  box-shadow: -1px 0px 35px 0px rgba(0,0,40,0.51);
+  -webkit-box-shadow: -1px 0px 35px 0px rgba(0,0,40,0.51);
+  -moz-box-shadow: -1px 0px 35px 0px rgba(0,0,40,0.51);
+}
+
+.background-citadel
+{
+  background-image: url('./Image/background/clan-citadel.jpg');
+  background-size: 140%;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-position: center center;
+}
+
+.background-portal
+{
+  background-image: url('./Image/background/clan-citadel-portal.jpg');
+  background-size: 140%;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-position: center center;
+}
+
+.background-dragons
+{
+  background-image: url('./Image/background/clan-citadel-dragons.jpg');
+  background-size: 140%;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-position: center center;
+}
+
+.background-senate
+{
+  background-image: url('./Image/background/clan-citadel-senate.jpg');
+  background-size: 140%;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-position: center center;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  header h1 span.website-title
+  {
+    font-size: 64px !important;
+  }
+
+  header p span.website-descriptor
+  {
+    font-size: 18px !important;
+  }
+
+  .background-citadel
+  {
+    background-image: url('./Image/background/mobile/clan-citadel.jpg');
+    background-size: 140%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: center center;
+  }
+
+  .background-portal
+  {
+    background-image: url('./Image/background/mobile/clan-citadel-portal.jpg');
+    background-size: 140%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: center center;
+  }
+
+  .background-dragons
+  {
+    background-image: url('./Image/background/mobile/clan-citadel-dragons.jpg');
+    background-size: 140%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: center center;
+  }
+
+  .background-senate
+  {
+    background-image: url('./Image/background/mobile/clan-citadel-senate.jpg');
+    background-size: 140%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: center center;
+  }
+}

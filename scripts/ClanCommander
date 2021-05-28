@@ -1,0 +1,139 @@
+#!/bin/bash
+#!/bin/sh
+# ------------------------------------------------------------------
+# Script Language: Bash
+# Name: ClanCommander
+# Command: ./ClanCommander [-h|--help]|<METHOD> [options] [args]
+# Description: Main Bash sript that handles utility functions
+# Created: 21.05.25
+# Last Project Version on Update: 1.1.X
+
+__SCRIPT=$0;
+__NAME=$(basename "${__SCRIPT}");
+__ROOT=$(dirname "$(readlink -f "$0")");
+__METHOD=$1;
+__OPT=$2;
+__ARG=$@;
+
+CleanupList='CleanupList';
+
+function log()
+{
+  local message=$1;
+  echo -e "[${__NAME}] ${message}.\n";
+  return 0;
+}
+
+function showHelp()
+{
+  echo -e "
+Command: ${__NAME} [-h|--help]|--method=<method> [options] [args]
+
+Method('s):
+
+    help:       Shows this help text in terminal, Can
+                also be triggered with -h or --help.
+    clean:      Cleans up project directories and resets
+                the project to its original state.
+    start:      Compiles TypeScript and uses 'npm start'
+                command to call project start method.
+    install:    Installs project dependencies for NodeJS
+    reinstall:  Cleans up & reinstalls dependencies for
+                this NodeJS project.
+
+Example command: ${__NAME} --method=clean --backup=true
+
+  Option('s):
+
+    --backup    Has a boolean value (true | false), Backup
+                files processed during method execution.
+    --help      Shows this help text in terminal, Can
+                also be triggered with -h or --help.
+
+  ";
+  return 0;
+}
+
+function removeFiles()
+{
+  # Select javascript file records from file
+  local fileList="${__ROOT}/${CleanupList}";
+  local currentType="#NULL";
+
+  # Go trough each line on $fileList; => cleanList.txt
+  while IFS= read -r line; do
+
+    if [[ "${line}" != "#DIR" && "${line}" != "#FILE" ]]; then
+
+      if [[ "${currentType}" == "#DIR" ]]; then
+
+        log "Removing  ${line}";
+        result=$( sudo rm -rf -d "${line}" ); # => -r: recursive -f: force removal -d: empty directories too
+        [[ $result -ne 0 ]] && return 1;
+
+      elif [[ "${currentType}" == "#FILE" ]]; then
+
+        log "Selected files from list: ${line}";
+
+        # Loop and Count over all the files that are selected on the current $line
+        local counter=0;
+        for file in `ls -r ${line} | echo "${line}"`; do
+          counter=$((counter+1));
+          log "${counter}. Removing ${file}";
+          result=$( sudo rm -rf "${file}" ); # => -f: force removal
+          [[ $result -ne 0 ]] && return 1;
+        done
+
+      else
+
+        log "[ERR] Couldn't find current Type: ${currentType}";
+
+      fi
+
+    else
+
+      # Set current Type to what the ${line} returns; => "#DIR" | "#FILE"
+      currentType="${line}";
+
+    fi
+
+  # Concat the strings with \r on the end
+  done <<< `cat "${fileList}" | sed -r 's/\r$//'`;
+
+  return 0;
+}
+
+function cleanProject()
+{
+  # Execute all Steps to cleanup
+
+  # 1. remove files located in directories written in cleanList.txt
+  result=$( removeFiles );
+  [[ ${result} -ne 0 ]] && log "Method failed... Try again maybe?" && return 1;
+}
+
+# Permission Check
+if [[ `id -u` -ne 0 ]]; then
+  log "Please run with 'sudo'";
+  exit 1;
+fi
+
+# Method Case switch
+case $__METHOD in
+
+  --help | -h | --method=help)
+    showHelp;
+  ;;
+
+  clean | --method=clean)
+    cleanProject;
+  ;;
+
+  '*')
+    echo "Couldn't find method: ${__METHOD}";
+    exit 1;
+  ;;
+
+esac
+
+exit 0;

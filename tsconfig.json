@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "UMD",
+      "moduleResolution":"Node",
+      "esModuleInterop": true,
+      // "allowSyntheticDefaultImports": true,
+      "sourceMap": true
+    }
+}

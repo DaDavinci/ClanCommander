@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap Cascade Style Sheet references -->
+    <link
+      rel="stylesheet"
+      href="./../Assets/StyleSheet/bootstrap.min.css"
+    />
+
+    <!-- Bootstrap JavaScript references -->
+    <script
+      src="./../Assets/JavaScript/jquery.min.js"
+    ></script>
+    <script
+      defer
+      src="./../Assets/JavaScript/bootstrap.js"
+     ></script>
+    <script
+      defer
+      src="./../Assets/JavaScript/bootstrap-navbar.js"
+    ></script>
+
+    <!-- Application Cascade Style Sheet references -->
+    <link
+      rel="stylesheet"
+      href="./../Assets/StyleSheet/utility.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./../Assets/StyleSheet/responsive.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./../Assets/Themes/lux.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./../Assets/Styles.css"
+    />
+
+    <!-- tesseract.js specific references -->
+    <script
+        src="https://unpkg.com/tesseract.js@v2.1.4/dist/tesseract.min.js"
+    ></script>
+
+    <!-- required Class & Dependency references -->
+    <!-- <script
+      src="./../Class/HTTPServer.js"
+    ></script> -->
+
+    <!-- DOM Controller references -->
+    <script
+      defer
+      src="./../Controller/CaptureWindow.js"
+    ></script>
+
+  </head>
+  <body class="content background-section" id="windowTop">
+
+    <!-- Navigation at the TOP of the DOM -->
+    <nav class="background-section navbar navbar-expand-lg border-0 navbar-fixed">
+      <a class="navbar-brand ml-3 scrolled-false" href=""><img src="./../Assets/Image/logo/looneybin.png" alt="Looney Bin Riot in Short" width="75px"></a>
+
+      <button style="border: 2px solid #E1BB34; color: #E1BB34" class="navbar-toggler btn btn-lg btn-outline-primary" type="button" data-toggle="collapse" data-target="#navbarLinks" aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
+        <p style="line-height: 26px; padding: 0xp; margin: 0px;">=</p>
+      </button>
+
+      <div class="collapse navbar-collapse text-center scrolled-false" id="navbarLinks">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link text-light" href="#windowTop" style="color: #E1BB34 !important;">ClanCommander</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto mr-3">
+          <!-- <li class="nav-item">
+              <a href="./Settings.html" class="btn btn-outline-light btn-disabled my-2 my-sm-0" style="color: #ffffff;">Settings</a>
+          </li> -->
+          <li class="nav-item">
+              <a class="btn btn-outline-primary my-2 my-sm-0" id="selectBtn" style="color: #ffffff;">Capture</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Video stream Wrapper & Controlls -->
+    <div class="container-fluid">
+
+      <section id="videoDisplay" style="padding:0;margin:0;margin-top: 5vh;">
+        <div class="row">
+          <video id="videoStream" crossorigin="anonymous" class="text-center bg-sharp-gradient-light width-8 center-1d" style="height: auto; min-height: 0px;"></video>
+        </div>
+        <div class="row" style="display:none;">
+          <div class="col-lg-5">
+
+          </div>
+          <div class="col-lg-2">
+            <button id="startBtn" class="text-center btn btn-info btn-block text-primary">
+              <i class="gg-play-button-o"></i>
+            </button>
+            <button id="stopBtn" class="text-center btn btn-danger btn-block text-primary">
+              <i class="gg-play-stop-o"></i>
+            </button>
+          </div>
+          <div class="col-lg-5">
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <script defer type="text/javascript">
+
+        // @TODO Create a limiter to check if theres already a job running so the system doesnt clog up.
+        // @TODO Create a good way to know the accuracy Multiplier value trough interval Seconds.
+        // @TODO Create a way to display the hidden canvas for post-processing or just an rectangle CSS element on the video screen
+        // to display what the OCR module is doing and where it gets it text from.
+        // @TODO Create a way to select bounding boxes for where the OCR module should read text from.
+        // @TODO push logging to the console window trough localhost:911/api/v1/console/addMessage
+
+        // Constants
+        const { createWorker, createScheduler } = Tesseract;
+
+        // Multiplier to increase accuracy by making the canvas bigger then original..
+        var accuracyMultiplier = 1.25; // int >= 1
+
+        // Interval time to wait in-between OCR detection
+        var intervalInSec = 5;
+
+        // Overload switch
+        var isOverloaded = false;
+
+        // Create a scheduler object so there can be workers added after
+        var scheduler = createScheduler();
+
+        // Video element selection -> Might not work idk?
+        var videoElem = document.getElementById('videoStream');
+
+        // Prepare detection interval
+        let detectionLoop;
+
+        // Idk what i get from this, but i think it get the ratio between height and width
+        getDimensions = () => {
+
+            // Ratio of the video source's true dimensions
+            var videoRatio = videoElement.videoWidth / videoElement.videoHeight;
+            // The width and height of the video element
+            var width = videoElement.offsetWidth, height = videoElement.offsetHeight;
+            // The ratio of the element's width to its height
+            var elementRatio = width/height;
+
+            // If the video element is short and wide
+            if(elementRatio > videoRatio) width = height * videoRatio;
+            // It must be tall and thin, or exactly equal to the original ratio
+            else height = width / videoRatio;
+
+            // Return a matching dimension
+            return {
+              width: width,
+              height: height
+            };
+
+        }
+
+        // Checks if picture in picture mode works in the current browser/runtime
+        // If picture in picture mode works in this browser it forces the video into pip mode.
+        togglePictureInPicture = () => {
+
+            // Check if theres something to toggle
+            if (document.pictureInPictureElement) {
+
+                // Exit PiP
+                document.exitPictureInPicture();
+
+            } else {
+
+                // Check for browser implementation for PiP
+                if (document.pictureInPictureEnabled) {
+                    // Open PiP
+                    videoElement.requestPictureInPicture();
+                }
+
+            }
+
+        }
+
+        // Creates a canvas from source (video snapshot/image) and processes the ImageData , Returns the updated canvas
+        processImage = async (src) =>
+        {
+
+            // get the dimensions and multiply them to in/de-crease OCR accuracy.
+            var w = src.videoWidth * accuracyMultiplier;
+            var h = src.videoHeight * accuracyMultiplier;
+
+            // Create a hidden canvas element
+            var canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+
+            // Use the canvas 2d context to create a image on the canvas
+            var ctx = canvas.getContext('2d');
+            ctx.imageSmoothingEnabled = true;
+            ctx.drawImage(src, 0, 0, w, h);
+
+            // Crop image from x, y to w, h and retrieve the pixelsArray R[i+1] G[i+2] B[i+3] A[i+4] 1D Array
+            // var imageData = ctx.getImageData(0, 0, w, h);
+            // var pixelsArray = imageData.data;
+
+            // @ TODO add a post processing loop
+
+            // var newData: ImageData = ctx.createImageData(w, h);
+            // var dataURL = trg.toDataURL();
+
+            // Return the updated canvas
+            return canvas;
+        }
+
+        // Run the OCR functions from tesseract.js on the workers/schedule
+        detectCharacters = async () => {
+
+            // Draw Snapshot to Canvas element and process the image
+            // Returns a canvas (var image)
+            // await to make sure that its synchronous and OCR doesnt get initiated before the image is returned
+            var image = await processImage(videoElement);
+
+            // Get the start time on processing the image
+            let start = new Date();
+
+            console.log("Scanning snapshot...");
+
+            // store the data from the OCR on the image, its always just text
+            const {
+                data: {
+                    text
+                }
+
+            // Run a job by the workers on the scheduler
+            } = await scheduler.addJob(
+
+                // Recognize job
+                'recognize',
+
+                // Processed image (canvasElem)
+                image,
+                {
+
+                    // what part of the image should be used to recognize text
+                    // These coordinates are for clan chat in lobby on 1080p screen
+                    rectangle: {
+                        top: 400 * accuracyMultiplier,
+                        left: 580 * accuracyMultiplier,
+                        width: 720 * accuracyMultiplier, // 760 is the actual width of the chatbow
+                        height: 100 * accuracyMultiplier
+                    }
+
+                }
+
+            );
+
+            // Get the end time on processing the image
+            let end = new Date();
+
+            // Check for overload
+            var overloadRatio = 2;
+            if( Number.parseInt(end.getMinutes().toString()+end.getSeconds().toString()) - Number.parseInt(start.getSeconds().toString()+start.getMinutes()) >= intervalInSec *overloadRatio )
+            {
+                isOverloaded = true;
+                console.log((Number.parseInt(end.getMinutes().toString()+end.getSeconds().toString()) - Number.parseInt(start.getSeconds().toString()+start.getMinutes())).toString() + " seconds is taking to long to process detection,\nOVERLOAD recorded..");
+            }else
+            {
+                isOverloaded = false;
+            }
+
+            // Cut up text by getting each line after \n and log each line seperate
+            console.log("[ " + start.getMinutes() + ":" + start.getSeconds()  + " -> " + end.getMinutes() + ":" + end.getSeconds()  + " ]:\n" + text.toString() );
+
+        };
+
+        // Always Execute Initialization of Tesseract
+        // @TODO: Change it so that its only initialized once there is a MediaStream running...
+        (async () =>
+        {
+            // CaptureWindow.js/ts already instantiates the videoElement so it cant be selected again
+            // videoElement = document.querySelector('video');
+
+            console.log("Starting realtime OCR...");
+
+            // Add multiple workers on schedule to increase OCR bandwidth
+            for (let i = 0; i < intervalInSec; i++) {
+
+                const worker = createWorker(
+                //    {
+                //        corePath: "../../node_modules/tesseract.js-core/src/worker-script/",
+                //        logger: log => console.log(log),
+                //        errorHandler: err => console.error(err),
+                //    }
+                );
+
+                await worker.load();
+                await worker.loadLanguage('eng');
+                await worker.initialize('eng');
+
+                console.log("Added Worker: " + JSON.stringify(worker) + ";\nSchedule: " + JSON.stringify(scheduler));
+
+                scheduler.addWorker(worker);
+
+            }
+
+            console.log("Finish adding Workers...");
+
+            // Register detection every 1s that occur in the <video> element
+            videoElement.addEventListener('play', () => {
+                //console.log("Play");
+                detectionLoop = setInterval(() => {
+                    // ONLY run detection if system isnt overloaded
+                    if(!isOverloaded)
+                        detectCharacters();
+                    else
+                        setTimeout(() => {
+                            isOverloaded = false;
+                        }, intervalInSec *1000 *2);
+                }, intervalInSec *1000);
+            });
+            videoElement.addEventListener('end', () => {
+                //console.log("End");
+                clearInterval(detectionLoop);
+            });
+            videoElement.addEventListener('pause', () => {
+                //console.log("Pause");
+                clearInterval(detectionLoop);
+            });
+
+            // Enable <video> element controlls like play/pause etc.
+            // Trigger Play event and PictureInPicture IF enabled == true
+            // videoElement.controls = true;
+            const event = new Event('play');
+            videoElement.dispatchEvent(event);
+            videoElement.play();
+            //togglePictureInPicture();
+
+            console.log("Finish Schedule setup...");
+
+        })();
+    </script>
+
+  </body>
+</html>
