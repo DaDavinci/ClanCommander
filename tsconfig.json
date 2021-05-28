@@ -1,10 +1,16 @@
 {
-    "compilerOptions": {
-      "target": "ES6",
-      "module": "UMD",
-      "moduleResolution":"Node",
-      "esModuleInterop": true,
-      // "allowSyntheticDefaultImports": true,
-      "sourceMap": true
-    }
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "UMD",
+    "moduleResolution":"Node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "sourceMap": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }
