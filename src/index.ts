@@ -1,125 +1,144 @@
 const { app, BrowserWindow } = require('electron');
 
-// Config Files
-// var MainConfig = require( __dirname + '/Config/MainConfig.json');
-// var WindowConfig = require( __dirname + '/Config/WindowConfig.json');
-// var ControllerConfig = require( __dirname + '/Config/ControllerConfig.json');
+class Main
+{
 
-// Generate global Identifier
-let random = Math.random();
-let nid = random*100;
-let sid = nid.toString();
-var globalId = sid.replace(".", "");
+  // Config Files
+  public Settings = require( __dirname + '/config/nxtbot-settings.json');
 
-// Get Primary Display dimensions
-const getViewport = () => {
-  return require('electron').screen;
-}
+  // Generate global Identifier
+  public random = Math.random();
+  public numberId = this.random*100;
+  public stringId = this.numberId.toString();
+  public globalId = this.stringId.replace(".", "");
 
-if (require('electron-squirrel-startup')) {
+  // Constructor
+  public constructor()
+  {
 
-  // Quit the Application
-  app.quit();
+    // Check if app is started with squirrel
+    if (require('electron-squirrel-startup')) {
 
-}
+      // Quit the Application
+      app.quit();
 
-const createConsoleWindow = () => {
+    }
+
+    // Set app flags
+    app.allowRendererProcessReuse = true;
+
+    // Set app EventHandlers
+    app.on('ready', () => {
+      main.createAppWindow();
+      main.createConsoleWindow();
+    });
+
+    app.on('window-all-closed', () => {
+      if (process.platform !== 'darwin') {
+        app.quit();
+      }
+    });
+
+    app.on('activate', () => {
+      if (BrowserWindow.getAllWindows().length === 0) {
+        main.createConsoleWindow();
+        main.createAppWindow();
+      }
+    });
+
+    return this;
+  }
 
   // Get Primary Display dimensions
-  var width = getViewport().width;
-  var height = getViewport().height;
+  public getViewport = () =>
+  {
+    return window.screen;
+  }
 
-  // Configure BrowserWindow.
-  const consoleWindow = new BrowserWindow({
-    width: 1280,
-    height: 480,
-    y:  ( height / 2 - 240 ) + 250,
-    x: ( width / 2 - 640 ),
-    title: "Console w/ Global Session: " + globalId.toString(),
-    autoHideMenuBar: false,
-    icon: 'src/Assets/Image/logo/looneybin.png',
-    webPreferences: {
-      nodeIntegration: true,
-      allowRunningInsecureContent: true
-    }
-  });
+  public createConsoleWindow = () =>
+  {
 
-  // Load Index View.
-  consoleWindow.loadFile('src/Source/ConsoleWindow.html', {
-    query: {
-      sid: globalId.toString()
-    }
-  });
+    // Get Primary Display dimensions
+    var width = this.getViewport().width;
+    var height = this.getViewport().height;
 
-  // Open the DevTools.
-  consoleWindow.webContents.openDevTools();
+    // Configure BrowserWindow.
+    const consoleWindow = new BrowserWindow({
+      width: 1280,
+      height: 480,
+      y:  ( height / 2 - 240 ) + 250,
+      x: ( width / 2 - 640 ),
+      title: "Console Session: " + this.globalId.toString(),
+      autoHideMenuBar: false,
+      icon: 'dist/assets/images/logo/looneybin.png',
+      webPreferences: {
+        nodeIntegration: true,
+        allowRunningInsecureContent: true,
+        experimentalFeatures: true
+      }
+    });
 
-  // Show window
-  consoleWindow.once('ready-to-show', () => {
-    consoleWindow.show();
-  });
+    // Load Index View.
+    consoleWindow.loadFile('dist/views/ConsoleWindow.html', {
+      query: {
+        sid: this.globalId.toString()
+      }
+    });
 
-  return consoleWindow;
+    // Open the DevTools.
+    consoleWindow.webContents.openDevTools();
+
+    // Show window
+    consoleWindow.once('ready-to-show', () => {
+      consoleWindow.show();
+    });
+
+    return consoleWindow;
+
+  }
+
+  public createAppWindow = () => {
+
+    // Get Primary Display dimensions
+    var width = this.getViewport().width;
+    var height = this.getViewport().height;
+
+    // Configure BrowserWindow.
+    const mainWindow = new BrowserWindow({
+      width: 1280,
+      height: 860,
+      y: ( height / 2 - 360 ) - 250,
+      x: ( width / 2 - 640 ),
+      title: "ClanCommander (NXTBot)",
+      autoHideMenuBar: false,
+      icon: 'dist/assets/images/logo/looneybin.png',
+      webPreferences: {
+        nodeIntegration: true,
+        allowRunningInsecureContent: true,
+        experimentalFeatures: true
+      }
+    });
+
+    // Load Index View.
+    mainWindow.loadFile('dist/views/CaptureWindow.html', {
+      query: {
+        sid: this.globalId.toString()
+      }
+    });
+
+    // Open the DevTools.
+    mainWindow.webContents.openDevTools();
+
+    // Show window
+    mainWindow.once('ready-to-show', () => {
+      mainWindow.show();
+    });
+
+    return mainWindow;
+
+  };
 
 }
 
-const createAppWindow = () => {
-
-  // Get Primary Display dimensions
-  var width = getViewport().width;
-  var height = getViewport().height;
-
-  // Configure BrowserWindow.
-  const mainWindow = new BrowserWindow({
-    width: 1280,
-    height: 860,
-    y: ( height / 2 - 360 ) - 250,
-    x: ( width / 2 - 640 ),
-    title: "ClanCommander w/ Global Session: " + globalId.toString(),
-    autoHideMenuBar: true,
-    icon: 'src/Assets/Image/logo/looneybin.png',
-    webPreferences: {
-      nodeIntegration: true,
-      allowRunningInsecureContent: true,
-      experimentalFeatures: true
-    }
-  });
-
-  // Load Index View.
-  mainWindow.loadFile('src/Source/CaptureWindow.html', {
-    query: {
-      sid: globalId.toString()
-    }
-  });
-
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
-
-  // Show window
-  mainWindow.once('ready-to-show', () => {
-    mainWindow.show();
-  });
-
-  return mainWindow;
-
-};
-
-app.allowRendererProcessReuse = true;
-
-app.on('ready', () => {
-  createAppWindow();
-  createConsoleWindow();
-});
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
-
-app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createConsoleWindow();
-    createAppWindow();
-  }
-});
+// Run the Client
+const main = new Main();

@@ -94,6 +94,7 @@ target/
 
 # TypeScript & Mapping
 !src/**.ts
+!src/**/*.ts
 src/**.js.map
 src/**.js
 !src/**/*.ts
