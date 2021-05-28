@@ -1,14 +1,6 @@
 # RuneScape 3 - ClanCommander
 A RuneScape 3 Chat Bot and Event Listeners to make Managing a Clan a bit easier.
 
-## Part of ClanCommander
-- [Website]('https://looneybin-official.cf')
-- [Endpoints]('https://api.looneybin-official.cf/v1')
-- [Dashboard]('https://looneybin-official.cf/admin/dashboard')
-
-RSN: [DaDavinci]('https://github.com/DaDavinci')<br>
-![http://www.runeclan.com/uid/1814028](http://www.runeclan.com/signature/user/1814028/user1-dark.png)
-
 # Progress - Checklist
 Current status on project features and implementation, uses images to display colors...
 PLEASE FIX `.md` FORMATTING & ADD CSS PROPERTIES!<br>
@@ -21,6 +13,8 @@ PLEASE FIX `.md` FORMATTING & ADD CSS PROPERTIES!<br>
 2. ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Change Screen Capturing output from a `<video>` element to `<canvas>` so `Tessaract.js` can interact with the feed.
 3. ![#00ff7f](https://via.placeholder.com/15/00ff7f/000000?text=+) Fix local URL's to the newly structured src folder.
 4. ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Make sure to try out live ocr with `tessaract-video` on github.
+5. Add `ml5.js` library and add Robot functionality.
+6. `Refactor` The code to be efficient with typescript.
 
 ## Application Features & User Interface
 - ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Fix `.ts` files not being executed withing electron
