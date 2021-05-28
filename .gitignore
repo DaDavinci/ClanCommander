@@ -95,11 +95,13 @@ target/
 # TypeScript & Mapping
 !src/**.ts
 !src/**/*.ts
+dist/**/*.js
 src/**.js.map
 src/**.js
-!src/**/*.ts
 src/**/*.js.map
 src/**/*.js
+dist/index.js
+dist/index.js.map
 
 # Individual files
 **/*.code-workspace
