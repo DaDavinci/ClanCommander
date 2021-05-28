@@ -92,19 +92,21 @@ typings/
 out/
 target/
 
-# TypeScript & Mapping
+# TypeScript/Javascript & Mapping
 !src/**.ts
 !src/**/*.ts
+!dist/assets/javascript/**.js
+!dist/assets/javascript/**.js.map
+
+dist/**/*.js.map
 dist/**/*.js
 src/**.js.map
 src/**.js
 src/**/*.js.map
 src/**/*.js
-dist/index.js
-dist/index.js.map
 
-# Individual files
-**/*.code-workspace
+# Individual file extensions
+*.code-workspace
 
-# useless files
+# Useless files
 desktop.ini

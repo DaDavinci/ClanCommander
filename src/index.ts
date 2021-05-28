@@ -51,25 +51,15 @@ class Main
     return this;
   }
 
-  // Get Primary Display dimensions
-  public getViewport = () =>
-  {
-    return window.screen;
-  }
-
   public createConsoleWindow = () =>
   {
-
-    // Get Primary Display dimensions
-    var width = this.getViewport().width;
-    var height = this.getViewport().height;
 
     // Configure BrowserWindow.
     const consoleWindow = new BrowserWindow({
       width: 1280,
       height: 480,
-      y:  ( height / 2 - 240 ) + 250,
-      x: ( width / 2 - 640 ),
+      y:  ( 1280 / 2 - 240 ) + 250,
+      x: ( 480 / 2 - 640 ),
       title: "Console Session: " + this.globalId.toString(),
       autoHideMenuBar: false,
       icon: 'dist/assets/images/logo/looneybin.png',
@@ -101,16 +91,12 @@ class Main
 
   public createAppWindow = () => {
 
-    // Get Primary Display dimensions
-    var width = this.getViewport().width;
-    var height = this.getViewport().height;
-
     // Configure BrowserWindow.
     const mainWindow = new BrowserWindow({
-      width: 1280,
-      height: 860,
-      y: ( height / 2 - 360 ) - 250,
-      x: ( width / 2 - 640 ),
+      width: 1600,
+      height: 900,
+      y: ( 1600 / 2 - 400 ) - 250,
+      x: ( 900 / 2 - 225 ),
       title: "ClanCommander (NXTBot)",
       autoHideMenuBar: false,
       icon: 'dist/assets/images/logo/looneybin.png',
